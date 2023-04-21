@@ -46,14 +46,21 @@ def createInterface():
                        command=lambda: changePages(-1))
     backwards.grid(row = 3, column = 1)
 
-    backwards = Button(window, width=20, height=3, text="Page →", bg = "cyan", font=("Dosis", 12),
+    forward = Button(window, width=20, height=3, text="Page →", bg = "cyan", font=("Dosis", 12),
                        command=lambda: changePages(1))
-    backwards.grid(row = 3, column = 3)
+    forward.grid(row = 3, column = 3)
+
+    randomVerseClick = Button(window, width=20, height=3, text="random verse", bg = "cyan", font=("Dosis", 12),
+                       command=randomVerse)
+    randomVerseClick.grid(row = 3, column = 2)
 
     window.configure(bg = "darkturquoise")    
     window.title("Bible")
-    window.geometry("520x650")
+    window.geometry("540x650")
     window.mainloop()
+
+def randomVerse():
+    showverse(random.randint(0, len(Verses)))
 
 def search(book, verse):
     global bibleText
@@ -88,13 +95,12 @@ def changePages(Direction):
     global openPage
     global verseSelector
 
-     
     if currentPage == 0:
         if ":" in openPage:
             openPage += "\t"
         else:
             openPage += ":1"
-
+            
         for each in Verses:
             if openPage in each:
                 first = Verses.index(each)    
@@ -109,7 +115,6 @@ def changePages(Direction):
             
     else:
         if currentPage + Direction != -1 and currentPage + Direction != len(Verses) + 1:
-            showverse(currentPage + Direction)
-        
+            showverse(currentPage + Direction)     
     
 createInterface()
