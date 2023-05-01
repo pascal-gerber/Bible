@@ -1,3 +1,4 @@
+import tkResizer
 from tkinter import *
 import random
 
@@ -32,25 +33,25 @@ def createInterface():
     verseSelector = Entry(window)
     verseSelector.grid(row = 0, column = 2)
 
-    searchVerse = Button(window, text="search verse", bg="cyan", width = 15, height = 4,
+    searchVerse = Button(window, text="search verse", bg="cyan", width = tkResizer.adapt(15), height = tkResizer.adapt(4),
                          command = lambda verseSelector = verseSelector, variable = variable:search(variable.get(), verseSelector.get()))
     searchVerse.grid(row = 0, column = 3)
 
-    bibleText = Text(window, width=60, height=30, bg="aqua")
+    bibleText = Text(window, width=tkResizer.adapt(60), height=tkResizer.adapt(30), bg="aqua")
     bibleText.grid(row = 1, column = 0, columnspan = 4)
 
     empty = Label(window, height=1, bg="darkturquoise")
     empty.grid(row = 2)
 
-    backwards = Button(window, width=20, height=3, text="← Page", bg = "cyan", font=("Dosis", 12),
+    backwards = Button(window, width=tkResizer.adapt(20), height=tkResizer.adapt(3), text="← Page", bg = "cyan", font=("Dosis", 12),
                        command=lambda: changePages(-1))
     backwards.grid(row = 3, column = 1)
 
-    forward = Button(window, width=20, height=3, text="Page →", bg = "cyan", font=("Dosis", 12),
+    forward = Button(window, width=tkResizer.adapt(20), height=tkResizer.adapt(3), text="Page →", bg = "cyan", font=("Dosis", 12),
                        command=lambda: changePages(1))
     forward.grid(row = 3, column = 3)
 
-    randomVerseClick = Button(window, width=20, height=3, text="random verse", bg = "cyan", font=("Dosis", 12),
+    randomVerseClick = Button(window, width=tkResizer.adapt(20), height=tkResizer.adapt(3), text="random verse", bg = "cyan", font=("Dosis", 12),
                        command=randomVerse)
     randomVerseClick.grid(row = 3, column = 2)
 
